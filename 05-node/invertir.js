@@ -6,3 +6,5 @@ function invert(o) {
 	}
 	return invertir
 }
+
+

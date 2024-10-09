@@ -13,7 +13,7 @@ function getStudentsWithNamesAndTopNotes(students) {
      }
    }
 
-   // Devolver el nuevo objeto con el nombre y la nota más alta
+  
    return { name: student.name, topNote: topNote };
  });
 }

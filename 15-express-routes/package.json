@@ -1,0 +1,24 @@
+{
+  "name": "15-express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "eslint": "^9.13.0",
+    "globals": "15.11.0"
+  },
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}

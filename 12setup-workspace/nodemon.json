@@ -1,0 +1,5 @@
+{
+  "watch": ["notas.js"],
+  "ext": "js",
+  "exec": "node notas.js"
+}

@@ -17,3 +17,6 @@
 [2024-11-11 20:04:24] [32minfo[39m: GET request to /
 [2024-11-11 20:12:13] [32minfo[39m: Server is running on port 3009
 [2024-11-11 20:13:09] [32minfo[39m: ::1 - - [11/Nov/2024:19:13:09 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0"
+[2024-12-09 18:26:37] [32minfo[39m: Server is running on port 3009
+[2024-12-09 18:26:53] [32minfo[39m: ::1 - - [09/Dec/2024:17:26:53 +0000] "GET / HTTP/1.1" 200 11 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0"
+[2024-12-09 18:26:53] [32minfo[39m: ::1 - - [09/Dec/2024:17:26:53 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:3009/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0"

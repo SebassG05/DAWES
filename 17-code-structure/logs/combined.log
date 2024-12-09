@@ -9,3 +9,21 @@
 {"level":"info","message":"Server running on port 3013","timestamp":"2024-11-19T19:50:58.235Z"}
 {"level":"info","message":"Server running on port 3013","timestamp":"2024-11-19T19:50:59.569Z"}
 {"level":"info","message":"Server running on port 3013","timestamp":"2024-11-19T19:51:00.202Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-09T17:46:33.534Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-09T17:46:34.201Z"}
+{"level":"info","message":"[2024-12-09T17:47:36.325Z] GET /","timestamp":"2024-12-09T17:47:36.325Z"}
+{"level":"info","message":"::1 - - [09/Dec/2024:17:47:36 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-09T17:47:36.334Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2024-12-09T18:02:43.748Z"}
+{"level":"info","message":"[2024-12-09T18:03:07.709Z] GET /items","timestamp":"2024-12-09T18:03:07.709Z"}
+{"level":"info","message":"::1 - - [09/Dec/2024:18:03:07 +0000] \"GET /items HTTP/1.1\" 404 144 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-09T18:03:07.719Z"}
+{"level":"info","message":"[2024-12-09T18:03:30.807Z] GET /","timestamp":"2024-12-09T18:03:30.807Z"}
+{"level":"info","message":"::1 - - [09/Dec/2024:18:03:30 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-09T18:03:30.808Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2024-12-09T18:04:42.897Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2024-12-09T18:05:00.644Z"}
+{"level":"info","message":"[2024-12-09T18:05:32.740Z] GET /","timestamp":"2024-12-09T18:05:32.740Z"}
+{"level":"info","message":"::1 - - [09/Dec/2024:18:05:32 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-09T18:05:32.746Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2024-12-09T18:12:15.609Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-09T18:15:04.289Z"}
+{"level":"info","message":"[2024-12-09T18:15:14.568Z] POST /notes/create","timestamp":"2024-12-09T18:15:14.568Z"}
+{"level":"info","message":"::1 - - [09/Dec/2024:18:15:14 +0000] \"POST /notes/create HTTP/1.1\" 200 11 \"-\" \"PostmanRuntime/7.42.0\"","timestamp":"2024-12-09T18:15:14.847Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-09T18:15:15.760Z"}

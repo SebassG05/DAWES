@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import { body } from 'express-validator';
-import { createNote, editNote, deleteNote, getNotes } from '../controllers/notesController.js';
+import { createNote, editNote, deleteNote, getNotes, importNotes, exportNotes } from '../controllers/notesController.js';
 import { authenticateToken } from '../middlewares/authMiddleware.js';
+import upload from '../middlewares/uploadMiddleware.js';
 
 const notesRouter = Router();
 
@@ -20,5 +21,8 @@ notesRouter.delete('/delete', authenticateToken, [
 ], deleteNote);
 
 notesRouter.get('/', authenticateToken, getNotes);
+
+notesRouter.post('/import', authenticateToken, upload.array('files'), importNotes);
+notesRouter.get('/export', authenticateToken, exportNotes);
 
 export default notesRouter;

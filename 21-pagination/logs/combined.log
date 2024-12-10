@@ -123,3 +123,4 @@
 {"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T11:26:43.147Z"}
 {"level":"info","message":"[2024-12-10T11:26:45.488Z] GET /notes?sortBy=title&order=desc&filter=test&page=1&limit=200","timestamp":"2024-12-10T11:26:45.488Z"}
 {"level":"info","message":"::1 - - [10/Dec/2024:11:26:45 +0000] \"GET /notes?sortBy=title&order=desc&filter=test&page=1&limit=200 HTTP/1.1\" 200 191 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T11:26:45.521Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T11:50:27.079Z"}

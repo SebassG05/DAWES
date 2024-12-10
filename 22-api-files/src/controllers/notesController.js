@@ -1,5 +1,8 @@
 import { validationResult } from 'express-validator';
 import { saveNote, getNote, updateNote, deleteNoteFile, getAllNotes } from '../models/noteModel.js';
+import fs from 'fs';
+import path from 'path';
+import archiver from 'archiver';
 
 export function createNote(req, res) {
     const errors = validationResult(req);
@@ -85,4 +88,57 @@ export function getNotes(req, res) {
         limit,
         notes: paginatedNotes
     });
+}
+
+export function importNotes(req, res) {
+    const files = req.files;
+    if (!files) {
+        return res.status(400).send('No files were uploaded.');
+    }
+
+    files.forEach(file => {
+        const filePath = path.join('./notas', file.originalname);
+        const content = fs.readFileSync(filePath, 'utf-8');
+        const note = {
+            noteName: path.basename(file.originalname, '.note'),
+            content,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            size: Buffer.byteLength(content, 'utf8')
+        };
+        fs.writeFileSync(path.join('./notas', `${note.noteName}.json`), JSON.stringify(note));
+        fs.unlinkSync(filePath); // Remove the .note file after processing
+    });
+
+    res.send('Files imported successfully.');
+}
+
+export function exportNotes(req, res) {
+    const { filter } = req.query;
+    const notesDir = './notas';
+    const files = fs.readdirSync(notesDir);
+    const notes = files.map(file => {
+        try {
+            return JSON.parse(fs.readFileSync(path.join(notesDir, file), 'utf-8'));
+        } catch (error) {
+            console.error(`Error parsing JSON from file ${file}:`, error);
+            return null;
+        }
+    }).filter(note => note !== null);
+
+    let filteredNotes = notes;
+    if (filter) {
+        filteredNotes = notes.filter(note => note.noteName.includes(filter) || note.content.includes(filter));
+    }
+
+    const zip = archiver('zip');
+    res.attachment('notes.zip');
+    zip.pipe(res);
+
+    filteredNotes.forEach(note => {
+        const filePath = path.join(notesDir, `${note.noteName}.json`);
+        zip.append(fs.createReadStream(filePath), { name: `${note.noteName}.note` });
+    });
+
+    zip.finalize();
 }

@@ -139,3 +139,19 @@
 {"level":"info","message":"::1 - - [10/Dec/2024:12:00:28 +0000] \"GET /notes/export HTTP/1.1\" 200 - \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T12:00:28.097Z"}
 {"level":"info","message":"[2024-12-10T12:00:46.568Z] POST /notes/create","timestamp":"2024-12-10T12:00:46.568Z"}
 {"level":"info","message":"::1 - - [10/Dec/2024:12:00:46 +0000] \"POST /notes/create HTTP/1.1\" 200 11 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T12:00:46.581Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T12:04:38.902Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T12:18:06.592Z"}
+{"level":"info","message":"[2024-12-10T12:18:36.364Z] GET /api-docs","timestamp":"2024-12-10T12:18:36.364Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:12:18:36 +0000] \"GET /api-docs HTTP/1.1\" 301 158 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-10T12:18:36.377Z"}
+{"level":"info","message":"[2024-12-10T12:18:36.383Z] GET /api-docs/","timestamp":"2024-12-10T12:18:36.383Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:12:18:36 +0000] \"GET /api-docs/ HTTP/1.1\" 200 3106 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-10T12:18:36.398Z"}
+{"level":"info","message":"[2024-12-10T12:18:36.417Z] GET /api-docs/swagger-ui.css","timestamp":"2024-12-10T12:18:36.417Z"}
+{"level":"info","message":"[2024-12-10T12:18:36.425Z] GET /api-docs/swagger-ui-bundle.js","timestamp":"2024-12-10T12:18:36.425Z"}
+{"level":"info","message":"[2024-12-10T12:18:36.429Z] GET /api-docs/swagger-ui-standalone-preset.js","timestamp":"2024-12-10T12:18:36.429Z"}
+{"level":"info","message":"[2024-12-10T12:18:36.431Z] GET /api-docs/swagger-ui-init.js","timestamp":"2024-12-10T12:18:36.431Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:12:18:36 +0000] \"GET /api-docs/swagger-ui-init.js HTTP/1.1\" 200 9340 \"http://localhost:3013/api-docs/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-10T12:18:36.434Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:12:18:36 +0000] \"GET /api-docs/swagger-ui.css HTTP/1.1\" 200 152072 \"http://localhost:3013/api-docs/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-10T12:18:36.514Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:12:18:36 +0000] \"GET /api-docs/swagger-ui-bundle.js HTTP/1.1\" 200 1426050 \"http://localhost:3013/api-docs/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-10T12:18:36.522Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:12:18:37 +0000] \"GET /api-docs/swagger-ui-standalone-preset.js HTTP/1.1\" 200 230007 \"http://localhost:3013/api-docs/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-10T12:18:37.244Z"}
+{"level":"info","message":"[2024-12-10T12:18:37.419Z] GET /api-docs/favicon-32x32.png","timestamp":"2024-12-10T12:18:37.419Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:12:18:37 +0000] \"GET /api-docs/favicon-32x32.png HTTP/1.1\" 200 628 \"http://localhost:3013/api-docs/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-10T12:18:37.439Z"}

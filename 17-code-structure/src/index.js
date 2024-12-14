@@ -1,6 +1,6 @@
 import app from "./app.js";
 import config from "./config.js";
-import logger from "./src/utils/logger.js";
+import logger from "./utils/logger.js";
 
 const PORT = config.app.PORT;
 

@@ -1,5 +1,5 @@
 import express from 'express';
-import loaders from './src/loaders/index.js';
+import loaders from './loaders/index.js';
 
 const app = express();
 

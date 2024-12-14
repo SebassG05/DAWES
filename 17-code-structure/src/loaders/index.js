@@ -1,4 +1,4 @@
-import expressLoader from '../express.js';
+import expressLoader from './express.js';
 
 function init(app) {
     expressLoader(app);

@@ -155,3 +155,18 @@
 {"level":"info","message":"::1 - - [10/Dec/2024:12:18:37 +0000] \"GET /api-docs/swagger-ui-standalone-preset.js HTTP/1.1\" 200 230007 \"http://localhost:3013/api-docs/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-10T12:18:37.244Z"}
 {"level":"info","message":"[2024-12-10T12:18:37.419Z] GET /api-docs/favicon-32x32.png","timestamp":"2024-12-10T12:18:37.419Z"}
 {"level":"info","message":"::1 - - [10/Dec/2024:12:18:37 +0000] \"GET /api-docs/favicon-32x32.png HTTP/1.1\" 200 628 \"http://localhost:3013/api-docs/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0\"","timestamp":"2024-12-10T12:18:37.439Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T14:42:52.945Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T14:42:55.442Z"}
+{"level":"info","message":"[2024-12-10T14:42:59.242Z] POST /auth/login","timestamp":"2024-12-10T14:42:59.242Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T14:43:03.075Z"}
+{"level":"info","message":"[2024-12-10T14:43:05.611Z] POST /auth/login","timestamp":"2024-12-10T14:43:05.612Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:14:43:06 +0000] \"POST /auth/login HTTP/1.1\" 200 165 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T14:43:06.372Z"}
+{"level":"info","message":"[2024-12-10T14:43:52.816Z] PUT /notes/edit","timestamp":"2024-12-10T14:43:52.816Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:14:43:52 +0000] \"PUT /notes/edit HTTP/1.1\" 401 12 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T14:43:52.822Z"}
+{"level":"info","message":"[2024-12-10T14:44:39.671Z] POST /notes/create","timestamp":"2024-12-10T14:44:39.671Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:14:44:39 +0000] \"POST /notes/create HTTP/1.1\" 403 9 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T14:44:39.688Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T15:33:45.960Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T16:13:30.197Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T16:13:32.042Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T18:45:36.053Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T18:45:37.503Z"}

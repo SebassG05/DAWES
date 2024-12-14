@@ -80,5 +80,5 @@ function deleteNote() {
     });
 }
 
-// Ejecutar el menú principal
+
 mainMenu();

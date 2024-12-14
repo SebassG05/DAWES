@@ -139,3 +139,37 @@
 {"level":"info","message":"::1 - - [10/Dec/2024:12:00:28 +0000] \"GET /notes/export HTTP/1.1\" 200 - \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T12:00:28.097Z"}
 {"level":"info","message":"[2024-12-10T12:00:46.568Z] POST /notes/create","timestamp":"2024-12-10T12:00:46.568Z"}
 {"level":"info","message":"::1 - - [10/Dec/2024:12:00:46 +0000] \"POST /notes/create HTTP/1.1\" 200 11 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T12:00:46.581Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T15:23:32.384Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T15:23:35.245Z"}
+{"level":"info","message":"[2024-12-10T15:24:01.197Z] POST /auth/login","timestamp":"2024-12-10T15:24:01.198Z"}
+{"level":"info","message":"Server running on port 3013","timestamp":"2024-12-10T15:24:05.353Z"}
+{"level":"info","message":"[2024-12-10T15:24:08.383Z] POST /auth/login","timestamp":"2024-12-10T15:24:08.383Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:24:08 +0000] \"POST /auth/login HTTP/1.1\" 200 165 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:24:08.970Z"}
+{"level":"info","message":"[2024-12-10T15:24:24.227Z] POST /notes/create","timestamp":"2024-12-10T15:24:24.227Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:24:24 +0000] \"POST /notes/create HTTP/1.1\" 403 9 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:24:24.241Z"}
+{"level":"info","message":"[2024-12-10T15:24:34.571Z] POST /notes/create","timestamp":"2024-12-10T15:24:34.571Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:24:34 +0000] \"POST /notes/create HTTP/1.1\" 200 11 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:24:34.608Z"}
+{"level":"info","message":"[2024-12-10T15:25:24.141Z] POST /notes/create","timestamp":"2024-12-10T15:25:24.141Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:25:24 +0000] \"POST /notes/create HTTP/1.1\" 200 11 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:25:24.150Z"}
+{"level":"info","message":"[2024-12-10T15:30:02.914Z] GET /notes?sortBy=title&order=desc&filter=test&page=1&limit=200","timestamp":"2024-12-10T15:30:02.914Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:30:02 +0000] \"GET /notes?sortBy=title&order=desc&filter=test&page=1&limit=200 HTTP/1.1\" 403 9 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:30:02.924Z"}
+{"level":"info","message":"[2024-12-10T15:30:12.972Z] GET /notes?sortBy=title&order=desc&filter=test&page=1&limit=200","timestamp":"2024-12-10T15:30:12.972Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:30:12 +0000] \"GET /notes?sortBy=title&order=desc&filter=test&page=1&limit=200 HTTP/1.1\" 403 9 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:30:12.979Z"}
+{"level":"info","message":"[2024-12-10T15:30:20.325Z] GET /notes?sortBy=title&order=desc&limit=200","timestamp":"2024-12-10T15:30:20.326Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:30:20 +0000] \"GET /notes?sortBy=title&order=desc&limit=200 HTTP/1.1\" 403 9 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:30:20.334Z"}
+{"level":"info","message":"[2024-12-10T15:30:38.579Z] GET /notes?sortBy=title&order=desc&limit=200","timestamp":"2024-12-10T15:30:38.579Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:30:38 +0000] \"GET /notes?sortBy=title&order=desc&limit=200 HTTP/1.1\" 200 941 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:30:38.793Z"}
+{"level":"info","message":"[2024-12-10T15:31:10.190Z] POST /notes/import","timestamp":"2024-12-10T15:31:10.190Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:31:10 +0000] \"POST /notes/import HTTP/1.1\" 403 9 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:31:10.198Z"}
+{"level":"info","message":"[2024-12-10T15:31:17.614Z] POST /notes/import","timestamp":"2024-12-10T15:31:17.614Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:31:17 +0000] \"POST /notes/import HTTP/1.1\" 403 9 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:31:17.624Z"}
+{"level":"info","message":"[2024-12-10T15:31:19.429Z] POST /notes/import","timestamp":"2024-12-10T15:31:19.429Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:31:19 +0000] \"POST /notes/import HTTP/1.1\" 403 9 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:31:19.437Z"}
+{"level":"info","message":"[2024-12-10T15:31:25.388Z] POST /notes/import","timestamp":"2024-12-10T15:31:25.388Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:31:25 +0000] \"POST /notes/import HTTP/1.1\" 403 9 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:31:25.392Z"}
+{"level":"info","message":"[2024-12-10T15:31:30.580Z] GET /notes/export","timestamp":"2024-12-10T15:31:30.580Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:31:30 +0000] \"GET /notes/export HTTP/1.1\" 403 9 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:31:30.586Z"}
+{"level":"info","message":"[2024-12-10T15:31:37.953Z] GET /notes/export","timestamp":"2024-12-10T15:31:37.953Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:31:38 +0000] \"GET /notes/export HTTP/1.1\" 200 - \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:31:38.074Z"}
+{"level":"info","message":"[2024-12-10T15:32:07.706Z] POST /notes/import","timestamp":"2024-12-10T15:32:07.706Z"}
+{"level":"info","message":"::1 - - [10/Dec/2024:15:32:07 +0000] \"POST /notes/import HTTP/1.1\" 200 28 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2024-12-10T15:32:07.723Z"}

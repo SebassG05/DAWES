@@ -412,3 +412,15 @@
 2024-12-15 16:38:36 info: Note edited: testNote3
 2024-12-15 16:38:47 info: Note imported: hola.txt
 2024-12-15 16:39:01 info: Note deleted: testNote3
+2024-12-15 16:55:44 info: Server running on port 3036
+2024-12-15 16:55:57 info: Note created: testNote3
+2024-12-15 16:56:01 info: Note edited: testNote3
+2024-12-15 16:56:05 info: Note deleted: testNote3
+2024-12-15 16:56:09 error: Error parsing note file hola.txt: Unexpected token 'h', "holaaaaaaa"... is not valid JSON
+2024-12-15 16:56:13 info: Note imported: hola.txt
+2024-12-15 17:08:19 info: Server running on port 3036
+2024-12-15 17:08:59 info: Note created: testNote3
+2024-12-15 17:09:02 info: Note edited: testNote3
+2024-12-15 17:09:06 info: Note deleted: testNote3
+2024-12-15 17:09:08 error: Error parsing note file hola.txt: Unexpected token 'h', "holaaaaaaa"... is not valid JSON
+2024-12-15 17:09:12 info: Note imported: hola.txt

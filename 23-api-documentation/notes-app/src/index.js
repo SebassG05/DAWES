@@ -2,7 +2,7 @@ import express from 'express';
 import detect from 'detect-port';
 import config from './config.js';
 import notesRouter from './routes/notes.js';
-import swaggerRouter from './swagger.js';
+import swaggerRouter from './utils/swagger.js'; // Corrige la ruta de importación
 import authRouter from './routes/auth.js';
 import logger from './utils/logger.js';
 

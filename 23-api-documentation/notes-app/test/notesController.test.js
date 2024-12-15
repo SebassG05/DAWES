@@ -1,6 +1,6 @@
 import request from 'supertest';
 import express from 'express';
-import notesRouter from '../routes/notes.js';
+import notesRouter from '../src/routes/notes.js';
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';

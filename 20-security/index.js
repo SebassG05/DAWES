@@ -1,9 +1,11 @@
-import app from './src/app.js';
-import logger from './src/utils/logger.js';
-import config from './src/config/config.js';
+import express from 'express';
+import routes from './src/routes/index.js'; // Explicitly specify the file
 
-const PORT = config.PORT;
+const app = express();
 
+app.use('/api', routes);
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    logger.info(`Server running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });

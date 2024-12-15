@@ -1,8 +1,8 @@
-const express = require('express');
+import express, { json } from 'express';
 const app = express();
 const port = 3012;
 
-app.use(express.json());
+app.use(json());
 
 app.get('/users', (req, res) => {
     res.status(200).json(users);

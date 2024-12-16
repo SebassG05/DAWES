@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 jest.mock('fs');
-jest.mock('../utils/logger.js');
+jest.mock('../src/utils/logger.js');
 
 const app = express();
 app.use(express.json());

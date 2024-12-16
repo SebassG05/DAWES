@@ -1,9 +1,9 @@
 import request from 'supertest';
 import express from 'express';
-import notesRouter from './notes.js';
-import { createNote, editNote, deleteNote, getNotes } from '../controllers/notes.js';
+import notesRouter from '../src/routes/notes.js'; // Corrige la ruta del import
+import { createNote, editNote, deleteNote, getNotes } from '../src/controllers/notes.js'; // Corrige la ruta del import
 
-jest.mock('../controllers/notes.js');
+jest.mock('../src/controllers/notes.js'); // Corrige la ruta del import
 
 const app = express();
 app.use(express.json());

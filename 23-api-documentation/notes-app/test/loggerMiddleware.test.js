@@ -1,7 +1,7 @@
-import { loggerMiddleware } from './loggerMiddleware.js';
-import logger from '../utils/logger.js';
+import { loggerMiddleware } from '../src/middlewares/loggerMiddleware.js'; // Corrige la ruta del import
+import logger from '../src/utils/logger.js'; // Corrige la ruta del import
 
-jest.mock('../utils/logger.js');
+jest.mock('../src/utils/logger.js'); // Corrige la ruta del import
 
 describe('Logger Middleware', () => {
     test('should log the request method and url', () => {

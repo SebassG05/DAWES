@@ -1,7 +1,7 @@
-import { errorHandlingMiddleware } from './errorHandlingMiddleware.js';
-import logger from '../utils/logger.js';
+import { errorHandlingMiddleware } from '../src/middlewares/errorHandlingMiddleware.js'; // Corrige la ruta del import
+import logger from '../src/utils/logger.js'; // Corrige la ruta del import
 
-jest.mock('../utils/logger.js');
+jest.mock('../src/utils/logger.js'); // Corrige la ruta del import
 
 describe('Error Handling Middleware', () => {
     test('should return 500 and error message', () => {

@@ -459,3 +459,10 @@
 2024-12-16 14:33:00 info: Note edited: testNote3
 2024-12-16 15:52:49 info: Server running on port 3035
 2024-12-16 16:43:27 info: Server running on port 3035
+2024-12-16 17:37:28 info: Server running on port 3035
+2024-12-16 17:39:00 info: Note created: testNote3
+2024-12-16 17:39:11 info: Note edited: testNote3
+2024-12-16 17:39:24 info: Note deleted: testNote3
+2024-12-16 17:39:33 error: Error parsing note file EC-Script.txt: Unexpected token 'h', "https://bl"... is not valid JSON
+2024-12-16 17:39:46 info: Note imported: EC-Script.txt
+2024-12-16 17:50:09 info: Server running on port 3035

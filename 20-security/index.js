@@ -1,5 +1,5 @@
 import express from 'express';
-import routes from './src/routes/index.js'; // Correct the import path
+import routes from './src/routes/index.js'; // Explicitly specify the file
 
 const app = express();
 

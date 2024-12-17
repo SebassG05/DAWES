@@ -1,31 +1,42 @@
 import express from 'express';
-import detect from 'detect-port';
-import config from './config.js';
+import dotenv from 'dotenv';
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsDoc from 'swagger-jsdoc';
 import notesRouter from './routes/notes.js';
-import swaggerRouter from './utils/swagger.js'; // Corrige la ruta de importación
-import authRouter from './routes/auth.js';
+import { errorHandlingMiddleware } from './middlewares/errorHandlingMiddleware.js';
 import logger from './utils/logger.js';
 
+dotenv.config();
+
 const app = express();
+const port = process.env.PORT || 3000;
+
 app.use(express.json());
+
+const swaggerOptions = {
+    swaggerDefinition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Notes API',
+            version: '1.0.0',
+            description: 'API for managing notes',
+        },
+        servers: [
+            {
+                url: `http://localhost:${port}`,
+            },
+        ],
+    },
+    apis: ['./src/routes/*.js'],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 app.use('/notes', notesRouter);
-app.use('/', swaggerRouter);
-app.use('/', authRouter); // Añadir esta línea para integrar la ruta de autenticación
 
-const DEFAULT_PORT = config.app.PORT;
+app.use(errorHandlingMiddleware);
 
-detect(DEFAULT_PORT, (err, availablePort) => {
-    if (err) {
-        logger.error(`Error detecting port: ${err.message}`);
-        process.exit(1);
-    }
-
-    const PORT = availablePort === DEFAULT_PORT ? DEFAULT_PORT : availablePort;
-    app.listen(PORT, () => {
-        logger.info(`Server running on port ${PORT}`);
-        console.log(`Server running on port ${PORT}`);
-    }).on('error', (err) => {
-        logger.error(`Error starting server: ${err.message}`);
-        process.exit(1);
-    });
+app.listen(port, () => {
+    logger.info(`Server running on port ${port}`);
 });

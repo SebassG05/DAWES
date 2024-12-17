@@ -18,6 +18,111 @@ describe('Notes Controller', () => {
         jest.clearAllMocks();
     });
 
+    describe('createNote', () => {
+        test('should return 400 if noteName is missing', () => {
+            req.body = { content: 'test content', category: 'testCategory' };
+            createNote(req, res, next);
+            expect(res.status).toHaveBeenCalledWith(400);
+            expect(res.json).toHaveBeenCalledWith({ error: 'noteName is required' });
+        });
+
+        test('should return 400 if content is missing', () => {
+            req.body = { noteName: 'testNote', category: 'testCategory' };
+            createNote(req, res, next);
+            expect(res.status).toHaveBeenCalledWith(400);
+            expect(res.json).toHaveBeenCalledWith({ error: 'content is required' });
+        });
+
+        test('should return 400 if content is not a non-empty string', () => {
+            req.body = { noteName: 'testNote', content: '', category: 'testCategory' };
+            createNote(req, res, next);
+            expect(res.status).toHaveBeenCalledWith(400);
+            expect(res.json).toHaveBeenCalledWith({ error: 'content is required' });
+        });
+
+        test('should return 400 if category is missing', () => {
+            req.body = { noteName: 'testNote', content: 'test content' };
+            createNote(req, res, next);
+            expect(res.status).toHaveBeenCalledWith(400);
+            expect(res.json).toHaveBeenCalledWith({ error: 'category is required' });
+        });
+
+        test('should handle errors when creating a note', () => {
+            req.body = { noteName: 'testNote', content: 'test content', category: 'testCategory' };
+            fs.writeFileSync.mockImplementation(() => {
+                throw new Error('Error creating note');
+            });
+            createNote(req, res, next);
+            expect(next).toHaveBeenCalledWith(expect.objectContaining({ statusCode: 500, message: 'Error creating note' }));
+        });
+    });
+
+    describe('editNote', () => {
+        test('should return 400 if noteName is missing', () => {
+            req.body = { content: 'test content', category: 'testCategory' };
+            editNote(req, res, next);
+            expect(res.status).toHaveBeenCalledWith(400);
+            expect(res.json).toHaveBeenCalledWith({ error: 'noteName is required' });
+        });
+
+        test('should return 400 if content is missing', () => {
+            req.body = { noteName: 'testNote', category: 'testCategory' };
+            editNote(req, res, next);
+            expect(res.status).toHaveBeenCalledWith(400);
+            expect(res.json).toHaveBeenCalledWith({ error: 'content is required' });
+        });
+
+        test('should return 400 if content is not a non-empty string', () => {
+            req.body = { noteName: 'testNote', content: '', category: 'testCategory' };
+            editNote(req, res, next);
+            expect(res.status).toHaveBeenCalledWith(400);
+            expect(res.json).toHaveBeenCalledWith({ error: 'content is required' });
+        });
+
+        test('should return 400 if category is missing', () => {
+            req.body = { noteName: 'testNote', content: 'test content' };
+            editNote(req, res, next);
+            expect(res.status).toHaveBeenCalledWith(400);
+            expect(res.json).toHaveBeenCalledWith({ error: 'category is required' });
+        });
+
+        test('should handle errors when editing a note', () => {
+            req.body = { noteName: 'testNote', content: 'test content', category: 'testCategory' };
+            fs.writeFileSync.mockImplementation(() => {
+                throw new Error('Error editing note');
+            });
+            editNote(req, res, next);
+            expect(next).toHaveBeenCalledWith(expect.objectContaining({ statusCode: 500, message: 'Error editing note' }));
+        });
+    });
+
+    describe('deleteNote', () => {
+        test('should return 400 if noteName is missing', () => {
+            req.body = {};
+            deleteNote(req, res, next);
+            expect(res.status).toHaveBeenCalledWith(400);
+            expect(res.json).toHaveBeenCalledWith({ error: 'noteName is required' });
+        });
+
+        test('should handle errors when deleting a note', () => {
+            req.body = { noteName: 'testNote' };
+            fs.unlinkSync.mockImplementation(() => {
+                throw new Error('Error deleting note');
+            });
+            deleteNote(req, res, next);
+            expect(next).toHaveBeenCalledWith(expect.objectContaining({ statusCode: 500, message: 'Error deleting note' }));
+        });
+
+        test('should delete note successfully', () => {
+            req.body = { noteName: 'testNote' };
+            fs.existsSync.mockReturnValue(true);
+            fs.unlinkSync.mockImplementation(() => {});
+            deleteNote(req, res, next);
+            expect(res.status).toHaveBeenCalledWith(200);
+            expect(res.send).toHaveBeenCalledWith('Nota eliminada');
+        });
+    });
+
     describe('importNotes', () => {
         test('should return 400 if no files are uploaded', () => {
             req.files = [];

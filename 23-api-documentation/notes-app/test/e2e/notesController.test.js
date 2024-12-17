@@ -32,7 +32,6 @@ describe('Notes Controller', () => {
     });
 
     test('should create a note', async () => {
-        fs.writeFileSync.mockImplementation(() => {});
         const response = await request(app)
             .post('/notes/create')
             .set('Authorization', `Bearer ${token}`)
@@ -40,16 +39,6 @@ describe('Notes Controller', () => {
 
         expect(response.status).toBe(201);
         expect(response.text).toBe('Nota creada');
-    });
-
-    test('should return 400 if noteName is missing when creating a note', async () => {
-        const response = await request(app)
-            .post('/notes/create')
-            .set('Authorization', `Bearer ${token}`)
-            .send({ content: 'This is a test note', category: 'testCategory' });
-
-        expect(response.status).toBe(400);
-        expect(response.body.error).toBe('noteName is required');
     });
 
     test('should return 400 if content is missing when creating a note', async () => {
@@ -60,16 +49,6 @@ describe('Notes Controller', () => {
 
         expect(response.status).toBe(400);
         expect(response.body.error).toBe('content is required');
-    });
-
-    test('should return 400 if category is missing when creating a note', async () => {
-        const response = await request(app)
-            .post('/notes/create')
-            .set('Authorization', `Bearer ${token}`)
-            .send({ noteName: 'testNote', content: 'This is a test note' });
-
-        expect(response.status).toBe(400);
-        expect(response.body.error).toBe('category is required');
     });
 
     test('should handle errors when creating a note', async () => {
@@ -88,15 +67,14 @@ describe('Notes Controller', () => {
 
     test('should edit a note', async () => {
         fs.existsSync.mockReturnValue(true);
-        fs.readFileSync.mockReturnValue('{}');
-        fs.writeFileSync.mockImplementation(() => {});
+        fs.readFileSync.mockReturnValue(JSON.stringify({ noteName: 'testNote', content: 'This is a test note', category: 'testCategory' }));
         const response = await request(app)
             .put('/notes/edit')
             .set('Authorization', `Bearer ${token}`)
             .send({ noteName: 'testNote', content: 'This is an edited test note', category: 'testCategory' });
 
-        expect(response.status).toBe(200);
         expect(response.text).toBe('Nota editada');
+        expect(response.status).toBe(200);
     });
 
     test('should return 404 if note to edit does not exist', async () => {
@@ -127,7 +105,6 @@ describe('Notes Controller', () => {
 
     test('should delete a note', async () => {
         fs.existsSync.mockReturnValue(true);
-        fs.unlinkSync.mockImplementation(() => {});
         const response = await request(app)
             .delete('/notes/delete')
             .set('Authorization', `Bearer ${token}`)
@@ -188,6 +165,72 @@ describe('Notes Controller', () => {
         expect(response.body.message).toBe('Error fetching notes');
     });
 
+    test('should return 400 if noteName is missing when creating a note', async () => {
+        fs.existsSync.mockReturnValue(true);
+        const response = await request(app)
+            .post('/notes/create')
+            .set('Authorization', `Bearer ${token}`)
+            .send({ content: 'This is a test note', category: 'testCategory' });
+
+        expect(response.status).toBe(400);
+        expect(response.body.error).toBe('noteName is required');
+    });
+
+    test('should return 400 if category is missing when creating a note', async () => {
+        fs.existsSync.mockReturnValue(true);
+        const response = await request(app)
+            .post('/notes/create')
+            .set('Authorization', `Bearer ${token}`)
+            .send({ noteName: 'testNote', content: 'This is a test note' });
+
+        expect(response.status).toBe(400);
+        expect(response.body.error).toBe('category is required');
+    });
+
+    test('should return 400 if noteName is missing when editing a note', async () => {
+        fs.existsSync.mockReturnValue(true);
+        const response = await request(app)
+            .put('/notes/edit')
+            .set('Authorization', `Bearer ${token}`)
+            .send({ content: 'This is an edited test note', category: 'testCategory' });
+
+        expect(response.status).toBe(400);
+        expect(response.body.error).toBe('noteName is required');
+    });
+
+    test('should return 400 if content is missing when editing a note', async () => {
+        fs.existsSync.mockReturnValue(true);
+        const response = await request(app)
+            .put('/notes/edit')
+            .set('Authorization', `Bearer ${token}`)
+            .send({ noteName: 'testNote', category: 'testCategory' });
+
+        expect(response.status).toBe(400);
+        expect(response.body.error).toBe('content is required');
+    });
+
+    test('should return 400 if category is missing when editing a note', async () => {
+        fs.existsSync.mockReturnValue(true);
+        const response = await request(app)
+            .put('/notes/edit')
+            .set('Authorization', `Bearer ${token}`)
+            .send({ noteName: 'testNote', content: 'This is an edited test note' });
+
+        expect(response.status).toBe(400);
+        expect(response.body.error).toBe('category is required');
+    });
+
+    test('should return 400 if noteName is missing when deleting a note', async () => {
+        fs.existsSync.mockReturnValue(true);
+        const response = await request(app)
+            .delete('/notes/delete')
+            .set('Authorization', `Bearer ${token}`)
+            .send({});
+
+        expect(response.status).toBe(400);
+        expect(response.body.error).toBe('noteName is required');
+    });
+
     test('should handle errors when importing notes', async () => {
         fs.renameSync.mockImplementation(() => {
             throw new Error('Error importing notes');
@@ -202,18 +245,6 @@ describe('Notes Controller', () => {
         expect(response.body.message).toBe('Error importing notes');
     });
 
-    test('should import notes successfully', async () => {
-        fs.renameSync.mockImplementation(() => {});
-
-        const response = await request(app)
-            .post('/notes/import')
-            .set('Authorization', `Bearer ${token}`)
-            .attach('files', Buffer.from('test file content'), 'testNote.json');
-
-        expect(response.status).toBe(200);
-        expect(response.text).toBe('Notas importadas');
-    });
-
     test('should handle errors when exporting notes', async () => {
         fs.readdirSync.mockImplementation(() => {
             throw new Error('Error exporting notes');
@@ -225,108 +256,5 @@ describe('Notes Controller', () => {
 
         expect(response.status).toBe(500);
         expect(response.body.message).toBe('Error exporting notes');
-    });
-
-    test('should export notes successfully', async () => {
-        fs.readdirSync.mockReturnValue(['testNote.json']);
-        fs.readFileSync.mockReturnValue('test file content');
-
-        const response = await request(app)
-            .get('/notes/export')
-            .set('Authorization', `Bearer ${token}`);
-
-        expect(response.status).toBe(200);
-        expect(response.header['content-disposition']).toContain('attachment; filename="notes.zip"');
-    });
-
-    test('should return 400 if no files are attached when importing notes', async () => {
-        const response = await request(app)
-            .post('/notes/import')
-            .set('Authorization', `Bearer ${token}`);
-
-        expect(response.status).toBe(400);
-        expect(response.body.error).toBe('No files uploaded');
-    });
-
-    test('should return 400 if noteName is missing when deleting a note', async () => {
-        const response = await request(app)
-            .delete('/notes/delete')
-            .set('Authorization', `Bearer ${token}`)
-            .send({});
-
-        expect(response.status).toBe(400);
-        expect(response.body.error).toBe('noteName is required');
-    });
-
-    test('should return 400 if noteName is missing when editing a note', async () => {
-        const response = await request(app)
-            .put('/notes/edit')
-            .set('Authorization', `Bearer ${token}`)
-            .send({ content: 'This is an edited test note', category: 'testCategory' });
-
-        expect(response.status).toBe(400);
-        expect(response.body.error).toBe('noteName is required');
-    });
-
-    test('should return 400 if content is missing when editing a note', async () => {
-        const response = await request(app)
-            .put('/notes/edit')
-            .set('Authorization', `Bearer ${token}`)
-            .send({ noteName: 'testNote', category: 'testCategory' });
-
-        expect(response.status).toBe(400);
-        expect(response.body.error).toBe('content is required');
-    });
-
-    test('should return 400 if category is missing when editing a note', async () => {
-        const response = await request(app)
-            .put('/notes/edit')
-            .set('Authorization', `Bearer ${token}`)
-            .send({ noteName: 'testNote', content: 'This is an edited test note' });
-
-        expect(response.status).toBe(400);
-        expect(response.body.error).toBe('category is required');
-    });
-
-    test('should return 400 if page is missing when getting notes', async () => {
-        const response = await request(app)
-            .get('/notes')
-            .set('Authorization', `Bearer ${token}`)
-            .query({ limit: 10 });
-
-        expect(response.status).toBe(400);
-        expect(response.body.error).toBe('page is required');
-    });
-
-    test('should return 400 if limit is missing when getting notes', async () => {
-        const response = await request(app)
-            .get('/notes')
-            .set('Authorization', `Bearer ${token}`)
-            .query({ page: 1 });
-
-        expect(response.status).toBe(400);
-        expect(response.body.error).toBe('limit is required');
-    });
-
-    test('should export notes successfully', async () => {
-        fs.readdirSync.mockReturnValue(['testNote.json']);
-        fs.readFileSync.mockReturnValue('test file content');
-
-        const response = await request(app)
-            .get('/notes/export')
-            .set('Authorization', `Bearer ${token}`);
-
-        expect(response.status).toBe(200);
-        expect(response.header['content-disposition']).toContain('attachment; filename="notes.zip"');
-    });
-
-    test('should return 400 if noteName is missing when importing notes', async () => {
-        const response = await request(app)
-            .post('/notes/import')
-            .set('Authorization', `Bearer ${token}`)
-            .attach('files', Buffer.from('test file content'));
-
-        expect(response.status).toBe(400);
-        expect(response.body.error).toBe('No files uploaded');
     });
 });

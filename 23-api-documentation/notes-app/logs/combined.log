@@ -695,3 +695,76 @@
 2024-12-17 16:22:25 error: Test error message
 2024-12-17 16:22:25 info: Test stream message
 2024-12-17 16:43:40 info: Server running on port 3035
+2024-12-17 16:46:18 info: Server running on port 3035
+2024-12-17 16:49:19 info: Server running on port 3035
+2024-12-17 16:53:39 info: Server running on port 3035
+2024-12-17 17:00:54 info: Note created: testNote3
+2024-12-17 17:01:05 info: Note edited: testNote3
+2024-12-17 17:01:16 error: Error parsing note file EC-Script.txt: Unexpected token 'h', "https://bl"... is not valid JSON
+2024-12-17 17:12:07 info: Note deleted: testNote3
+2024-12-17 17:21:01 info: Server running on port 3035
+2024-12-17 17:21:25 info: Note imported: hola.txt
+2024-12-17 17:38:34 error: Error parsing note file EC-Script.txt: Unexpected token 'h', "https://bl"... is not valid JSON
+2024-12-17 17:38:34 error: Error parsing note file hola.txt: Unexpected token 'h', "holaaaaaaa"... is not valid JSON
+2024-12-17 17:38:46 info: Note created: testNote3
+2024-12-17 17:38:50 error: Error parsing note file EC-Script.txt: Unexpected token 'h', "https://bl"... is not valid JSON
+2024-12-17 17:38:50 error: Error parsing note file hola.txt: Unexpected token 'h', "holaaaaaaa"... is not valid JSON
+2024-12-17 17:45:46 info: Note deleted: testNote3
+2024-12-17 17:45:54 info: Note created: testNote3
+2024-12-17 17:46:01 info: Note edited: testNote3
+2024-12-17 17:46:08 error: Error parsing note file EC-Script.txt: Unexpected token 'h', "https://bl"... is not valid JSON
+2024-12-17 17:46:08 error: Error parsing note file hola.txt: Unexpected token 'h', "holaaaaaaa"... is not valid JSON
+2024-12-17 17:46:15 info: Note imported: hola.txt
+2024-12-17 18:36:52 info: Server running on port 3035
+2024-12-17 18:56:59 info: Note created: testNote3
+2024-12-17 18:57:15 info: Note created: testNote3
+2024-12-17 18:59:16 info: Note created: testNote3
+2024-12-17 19:00:22 info: Note deleted: testNote3
+2024-12-17 19:01:02 info: Note created: testNote3
+2024-12-17 19:01:11 info: Note created: testNote3
+2024-12-17 19:02:16 info: Note edited: testNote3
+2024-12-17 19:02:36 error: Error parsing note file EC-Script.txt: Unexpected token 'h', "https://bl"... is not valid JSON
+2024-12-17 19:02:36 error: Error parsing note file hola.txt: Unexpected token 'h', "holaaaaaaa"... is not valid JSON
+2024-12-17 19:03:33 error: Error parsing note file EC-Script.txt: Unexpected token 'h', "https://bl"... is not valid JSON
+2024-12-17 19:03:33 error: Error parsing note file hola.txt: Unexpected token 'h', "holaaaaaaa"... is not valid JSON
+2024-12-17 19:03:56 error: Error: Multipart: Boundary not found
+    at new Multipart (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\busboy\lib\types\multipart.js:233:13)
+    at getInstance (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\busboy\lib\index.js:33:12)
+    at module.exports (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\busboy\lib\index.js:56:10)
+    at multerMiddleware (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\multer\lib\make-middleware.js:28:16)
+    at Layer.handle [as handle_request] (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\index.js:346:12)
+2024-12-17 19:06:06 info: Note created: testNote3
+2024-12-17 19:06:30 error: Error: Multipart: Boundary not found
+    at new Multipart (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\busboy\lib\types\multipart.js:233:13)
+    at getInstance (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\busboy\lib\index.js:33:12)
+    at module.exports (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\busboy\lib\index.js:56:10)
+    at multerMiddleware (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\multer\lib\make-middleware.js:28:16)
+    at Layer.handle [as handle_request] (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\index.js:346:12)
+2024-12-17 19:07:09 error: Error: Multipart: Boundary not found
+    at new Multipart (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\busboy\lib\types\multipart.js:233:13)
+    at getInstance (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\busboy\lib\index.js:33:12)
+    at module.exports (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\busboy\lib\index.js:56:10)
+    at multerMiddleware (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\multer\lib\make-middleware.js:28:16)
+    at Layer.handle [as handle_request] (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\sebas\OneDrive\Escritorio\DAWES\23-api-documentation\notes-app\node_modules\express\lib\router\index.js:346:12)
+2024-12-17 19:07:48 info: Note imported: TATOOS.txt
+2024-12-17 19:11:16 info: Note created: testNote3
+2024-12-17 19:11:19 info: Note edited: testNote3
+2024-12-17 19:11:22 info: Note deleted: testNote3
+2024-12-17 19:11:26 error: Error parsing note file EC-Script.txt: Unexpected token 'h', "https://bl"... is not valid JSON
+2024-12-17 19:11:26 error: Error parsing note file hola.txt: Unexpected token 'h', "holaaaaaaa"... is not valid JSON
+2024-12-17 19:11:26 error: Error parsing note file TATOOS.txt: Unexpected token 'T', "Tatoos Fut"... is not valid JSON

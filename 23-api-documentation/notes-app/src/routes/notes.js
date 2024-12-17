@@ -6,7 +6,7 @@ import { authMiddleware } from '../middlewares/authMiddleware.js';
 const upload = multer({ dest: 'uploads/' });
 const notesRouter = Router();
 
-notesRouter.use(authMiddleware); // Añadir esta línea para proteger las rutas
+notesRouter.use(authMiddleware); 
 
 /**
  * @swagger
@@ -177,7 +177,7 @@ notesRouter.get('/',getNotes);
  *       400:
  *         description: No files uploaded
  */
-notesRouter.post('/import',importNotes);
+notesRouter.post('/import', upload.array('files'), importNotes);
     
         
 
@@ -193,7 +193,7 @@ notesRouter.post('/import',importNotes);
  *       500:
  *         description: Error exporting notes
  */
-notesRouter.get('/export',exportNotes);
+notesRouter.get('/export', exportNotes);
 
 
 export default notesRouter;

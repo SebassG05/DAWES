@@ -1,0 +1,552 @@
+{
+	"info": {
+		"_postman_id": "f9d3c8f5-b234-4a09-b8ba-297b1797a6d4",
+		"name": "app-notas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33368015"
+	},
+	"item": [
+		{
+			"name": "CrearNota",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"noteName\": \"3ANILLO.\",\r\n    \"content\": \"El era un miembro de los biris norte desde chico iba a la bombonera pero la vida\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apibase}}/{{router}}/create",
+					"host": [
+						"{{apibase}}"
+					],
+					"path": [
+						"{{router}}",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditarNota",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"noteName\": \"3ANILLO\",\r\n    \"content\": \"el era un miembro de los biris norte desde chico iba a la bombonera pero la vida SE LO LLEVA AL CIELO 3 ANILLO DE LA BOMBONERA VAMOS SEVILLA ESTAMOS CONTIGO EL SEVILLISMO A CREADO ESCUELA PARA HONRAR LA MUERTE DE MI AMIGO AHORA EL ESTADIO ES UNA CALDERA LOLOLOLOLOLOLOL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3035/notes/edit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3035",
+					"path": [
+						"notes",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarNota",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"noteName\": \"TestNote\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3036/notes/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3036",
+					"path": [
+						"notes",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Set environment variable for token generated in the body\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.environment.set(\"token\", jsonData.token);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apibase}}/auth/login",
+					"host": [
+						"{{apibase}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear nota TOKEN",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Configuración de la request para obtener el token\r",
+							"pm.sendRequest({\r",
+							"    url: pm.environment.get(\"apibase\") + \"auth/login\", // Ajusta la URL de tu request obtenerToken\r",
+							"    method: \"POST\", // Método HTTP (POST, GET, etc.)\r",
+							"    header: {\r",
+							"        \"Content-Type\": \"application/json\"\r",
+							"    },\r",
+							"    body: {\r",
+							"        mode: \"raw\",\r",
+							"        raw: JSON.stringify({\r",
+							"            \"username\": \"admin\",\r",
+							"            \"password\": \"password\"\r",
+							"        })\r",
+							"    }\r",
+							"}, function (err, res) {\r",
+							"    if (err) {\r",
+							"        console.log(\"Error al obtener el token: \", err);\r",
+							"    } else {\r",
+							"        let response = res.json();\r",
+							"        let token = response.token; // Extraer el token de la respuesta\r",
+							"        pm.environment.set(\"token\", token); // Guardar el token en la variable de entorno\r",
+							"        console.log(\"Token guardado correctamente:\", token);\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"noteName\": \"testNote3\",\r\n  \"content\": \"This is a test note\",\r\n  \"category\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apibase}}/{{router}}/create",
+					"host": [
+						"{{apibase}}"
+					],
+					"path": [
+						"{{router}}",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar nota TOKEN",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"noteName\": \"testNote3\",\r\n  \"content\": \"Updated content\",\r\n  \"category\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apibase}}/{{router}}/edit",
+					"host": [
+						"{{apibase}}"
+					],
+					"path": [
+						"{{router}}",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar  Nota TOKEN",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Configuración de la request para obtener el token\r",
+							"pm.sendRequest({\r",
+							"    url: pm.environment.get(\"apibase\") + \"auth/login\", // Ajusta la URL de tu request obtenerToken\r",
+							"    method: \"POST\", // Método HTTP (POST, GET, etc.)\r",
+							"    header: {\r",
+							"        \"Content-Type\": \"application/json\"\r",
+							"    },\r",
+							"    body: {\r",
+							"        mode: \"raw\",\r",
+							"        raw: JSON.stringify({\r",
+							"            \"username\": \"admin\",\r",
+							"            \"password\": \"password\"\r",
+							"        })\r",
+							"    }\r",
+							"}, function (err, res) {\r",
+							"    if (err) {\r",
+							"        console.log(\"Error al obtener el token: \", err);\r",
+							"    } else {\r",
+							"        let response = res.json();\r",
+							"        let token = response.token; // Extraer el token de la respuesta\r",
+							"        pm.environment.set(\"token\", token); // Guardar el token en la variable de entorno\r",
+							"        console.log(\"Token guardado correctamente:\", token);\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"noteName\": \"testNote3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apibase}}/{{router}}/delete",
+					"host": [
+						"{{apibase}}"
+					],
+					"path": [
+						"{{router}}",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Nota",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Configuración de la request para obtener el token\r",
+							"pm.sendRequest({\r",
+							"    url: pm.environment.get(\"apibase\") + \"auth/login\", // Ajusta la URL de tu request obtenerToken\r",
+							"    method: \"POST\", // Método HTTP (POST, GET, etc.)\r",
+							"    header: {\r",
+							"        \"Content-Type\": \"application/json\"\r",
+							"    },\r",
+							"    body: {\r",
+							"        mode: \"raw\",\r",
+							"        raw: JSON.stringify({\r",
+							"            \"username\": \"admin\",\r",
+							"            \"password\": \"password\"\r",
+							"        })\r",
+							"    }\r",
+							"}, function (err, res) {\r",
+							"    if (err) {\r",
+							"        console.log(\"Error al obtener el token: \", err);\r",
+							"    } else {\r",
+							"        let response = res.json();\r",
+							"        let token = response.token; // Extraer el token de la respuesta\r",
+							"        pm.environment.set(\"token\", token); // Guardar el token en la variable de entorno\r",
+							"        console.log(\"Token guardado correctamente:\", token);\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apibase}}/{{router}}",
+					"host": [
+						"{{apibase}}"
+					],
+					"path": [
+						"{{router}}"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "sortBy",
+							"value": "title",
+							"disabled": true
+						},
+						{
+							"key": "filterBy",
+							"value": "title",
+							"disabled": true
+						},
+						{
+							"key": "filterValue",
+							"value": "testNote1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ImportarNotas",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Configuración de la request para obtener el token\r",
+							"pm.sendRequest({\r",
+							"    url: pm.environment.get(\"apibase\") + \"auth/login\", // Ajusta la URL de tu request obtenerToken\r",
+							"    method: \"POST\", // Método HTTP (POST, GET, etc.)\r",
+							"    header: {\r",
+							"        \"Content-Type\": \"application/json\"\r",
+							"    },\r",
+							"    body: {\r",
+							"        mode: \"raw\",\r",
+							"        raw: JSON.stringify({\r",
+							"            \"username\": \"admin\",\r",
+							"            \"password\": \"password\"\r",
+							"        })\r",
+							"    }\r",
+							"}, function (err, res) {\r",
+							"    if (err) {\r",
+							"        console.log(\"Error al obtener el token: \", err);\r",
+							"    } else {\r",
+							"        let response = res.json();\r",
+							"        let token = response.token; // Extraer el token de la respuesta\r",
+							"        pm.environment.set(\"token\", token); // Guardar el token en la variable de entorno\r",
+							"        console.log(\"Token guardado correctamente:\", token);\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/sebas/OneDrive/Documentos/TATOOS.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{apibase}}/{{router}}/import",
+					"host": [
+						"{{apibase}}"
+					],
+					"path": [
+						"{{router}}",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ExportarNotas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Configuración de la request para obtener el token\r",
+							"pm.sendRequest({\r",
+							"    url: pm.environment.get(\"apibase\") + \"auth/login\", // Ajusta la URL de tu request obtenerToken\r",
+							"    method: \"POST\", // Método HTTP (POST, GET, etc.)\r",
+							"    header: {\r",
+							"        \"Content-Type\": \"application/json\"\r",
+							"    },\r",
+							"    body: {\r",
+							"        mode: \"raw\",\r",
+							"        raw: JSON.stringify({\r",
+							"            \"username\": \"admin\",\r",
+							"            \"password\": \"password\"\r",
+							"        })\r",
+							"    }\r",
+							"}, function (err, res) {\r",
+							"    if (err) {\r",
+							"        console.log(\"Error al obtener el token: \", err);\r",
+							"    } else {\r",
+							"        let response = res.json();\r",
+							"        let token = response.token; // Extraer el token de la respuesta\r",
+							"        pm.environment.set(\"token\", token); // Guardar el token en la variable de entorno\r",
+							"        console.log(\"Token guardado correctamente:\", token);\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apibase}}/{{router}}/export",
+					"host": [
+						"{{apibase}}"
+					],
+					"path": [
+						"{{router}}",
+						"export"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "testNote1",
+							"disabled": true
+						},
+						{
+							"key": "filterValue",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

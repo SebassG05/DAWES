@@ -3,13 +3,14 @@ import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 import notesRouter from './routes/notes.js';
+import authRouter from './routes/auth.js';
 import { errorHandlingMiddleware } from './middlewares/errorHandlingMiddleware.js';
 import logger from './utils/logger.js';
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3035;
 
 app.use(express.json());
 
@@ -33,6 +34,7 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
+app.use('/auth', authRouter);
 app.use('/notes', notesRouter);
 
 app.use(errorHandlingMiddleware);

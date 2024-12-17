@@ -40,13 +40,9 @@ notesRouter.use(authMiddleware); // Añadir esta línea para proteger las rutas
  *       400:
  *         description: Bad request
  */
-notesRouter.post('/create', async (req, res, next) => {
-    try {
-        createNote(req, res, next);
-    } catch (error) {
-        next(error);
-    }
-});
+notesRouter.post('/create', createNote);
+        
+
 
 /**
  * @swagger
@@ -75,13 +71,8 @@ notesRouter.post('/create', async (req, res, next) => {
  *       404:
  *         description: Note not found
  */
-notesRouter.put('/edit', async (req, res, next) => {
-    try {
-        editNote(req, res, next);
-    } catch (error) {
-        next(error);
-    }
-});
+notesRouter.put('/edit',editNote);
+
 
 /**
  * @swagger
@@ -106,13 +97,8 @@ notesRouter.put('/edit', async (req, res, next) => {
  *       404:
  *         description: Note not found
  */
-notesRouter.delete('/delete', async (req, res, next) => {
-    try {
-        deleteNote(req, res, next);
-    } catch (error) {
-        next(error);
-    }
-});
+notesRouter.delete('/delete',deleteNote); 
+    
 
 /**
  * @swagger
@@ -163,13 +149,9 @@ notesRouter.delete('/delete', async (req, res, next) => {
  *                         type: string
  *                         format: date-time
  */
-notesRouter.get('/', async (req, res, next) => {
-    try {
-        getNotes(req, res, next);
-    } catch (error) {
-        next(error);
-    }
-});
+notesRouter.get('/',getNotes);
+        
+
 
 /**
  * @swagger
@@ -195,13 +177,9 @@ notesRouter.get('/', async (req, res, next) => {
  *       400:
  *         description: No files uploaded
  */
-notesRouter.post('/import', upload.array('files'), async (req, res, next) => {
-    try {
-        importNotes(req, res, next);
-    } catch (error) {
-        next(error);
-    }
-});
+notesRouter.post('/import',importNotes);
+    
+        
 
 /**
  * @swagger
@@ -215,12 +193,7 @@ notesRouter.post('/import', upload.array('files'), async (req, res, next) => {
  *       500:
  *         description: Error exporting notes
  */
-notesRouter.get('/export', async (req, res, next) => {
-    try {
-        exportNotes(req, res, next);
-    } catch (error) {
-        next(error);
-    }
-});
+notesRouter.get('/export',exportNotes);
+
 
 export default notesRouter;

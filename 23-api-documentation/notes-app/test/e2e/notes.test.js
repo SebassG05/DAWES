@@ -1,23 +1,35 @@
 import request from 'supertest';
 import express from 'express';
-import notesRouter from '../src/routes/notes.js'; // Corrige la ruta del import
-import { createNote, editNote, deleteNote, getNotes } from '../src/controllers/notes.js'; // Corrige la ruta del import
+import notesRouter from '../../src/routes/notes.js'; // Corrige la ruta del import
+import { createNote, editNote, deleteNote, getNotes } from '../../src/controllers/notes.js'; // Corrige la ruta del import
+import jwt from 'jsonwebtoken';
 
-jest.mock('../src/controllers/notes.js'); // Corrige la ruta del import
+jest.mock('../../src/controllers/notes.js'); // Corrige la ruta del import
 
 const app = express();
 app.use(express.json());
 app.use('/notes', notesRouter);
 
 describe('Notes Routes', () => {
+    let token;
+
+    beforeAll(() => {
+        process.env.JWT_SECRET = 'test_secret';
+        process.env.ADMIN_USERNAME = 'admin';
+        token = jwt.sign({ username: process.env.ADMIN_USERNAME }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    });
+
     beforeEach(() => {
         jest.clearAllMocks();
     });
 
     test('should create a note', async () => {
-        createNote.mockImplementation((req, res) => res.status(201).send('Nota creada'));
+        createNote.mockImplementation((req, res) => {
+            res.status(201).send('Nota creada');
+        });
         const response = await request(app)
             .post('/notes/create')
+            .set('Authorization', `Bearer ${token}`)
             .send({ noteName: 'testNote', content: 'This is a test note' });
 
         expect(response.status).toBe(201);
@@ -29,6 +41,7 @@ describe('Notes Routes', () => {
         editNote.mockImplementation((req, res) => res.status(200).send('Nota editada'));
         const response = await request(app)
             .put('/notes/edit')
+            .set('Authorization', `Bearer ${token}`)
             .send({ noteName: 'testNote', content: 'This is an edited test note' });
 
         expect(response.status).toBe(200);
@@ -40,6 +53,7 @@ describe('Notes Routes', () => {
         deleteNote.mockImplementation((req, res) => res.status(200).send('Nota eliminada'));
         const response = await request(app)
             .delete('/notes/delete')
+            .set('Authorization', `Bearer ${token}`)
             .send({ noteName: 'testNote' });
 
         expect(response.status).toBe(200);
@@ -51,6 +65,7 @@ describe('Notes Routes', () => {
         createNote.mockImplementation((req, res, next) => next(new Error('Test error')));
         const response = await request(app)
             .post('/notes/create')
+            .set('Authorization', `Bearer ${token}`)
             .send({ noteName: 'testNote', content: 'This is a test note' });
 
         expect(response.status).toBe(500);
@@ -60,6 +75,7 @@ describe('Notes Routes', () => {
         editNote.mockImplementation((req, res, next) => next(new Error('Test error')));
         const response = await request(app)
             .put('/notes/edit')
+            .set('Authorization', `Bearer ${token}`)
             .send({ noteName: 'testNote', content: 'This is an edited test note' });
 
         expect(response.status).toBe(500);
@@ -69,6 +85,7 @@ describe('Notes Routes', () => {
         deleteNote.mockImplementation((req, res, next) => next(new Error('Test error')));
         const response = await request(app)
             .delete('/notes/delete')
+            .set('Authorization', `Bearer ${token}`)
             .send({ noteName: 'testNote' });
 
         expect(response.status).toBe(500);
@@ -78,6 +95,7 @@ describe('Notes Routes', () => {
         getNotes.mockImplementation((req, res) => res.status(200).json({ notes: [], totalItems: 0, totalPages: 0, currentPage: 1 }));
         const response = await request(app)
             .get('/notes')
+            .set('Authorization', `Bearer ${token}`)
             .query({ page: 1, limit: 10 });
 
         expect(response.status).toBe(200);
@@ -89,6 +107,7 @@ describe('Notes Routes', () => {
         getNotes.mockImplementation((req, res, next) => next(new Error('Test error')));
         const response = await request(app)
             .get('/notes')
+            .set('Authorization', `Bearer ${token}`)
             .query({ page: 1, limit: 10 });
 
         expect(response.status).toBe(500);
@@ -98,6 +117,7 @@ describe('Notes Routes', () => {
         createNote.mockImplementation((req, res) => res.status(400).send('Note name is required'));
         const response = await request(app)
             .post('/notes/create')
+            .set('Authorization', `Bearer ${token}`)
             .send({ content: 'This is a test note' });
 
         expect(response.status).toBe(400);
@@ -107,6 +127,7 @@ describe('Notes Routes', () => {
         editNote.mockImplementation((req, res) => res.status(400).send('Note name is required'));
         const response = await request(app)
             .put('/notes/edit')
+            .set('Authorization', `Bearer ${token}`)
             .send({ content: 'This is an edited test note' });
 
         expect(response.status).toBe(400);
@@ -116,6 +137,7 @@ describe('Notes Routes', () => {
         deleteNote.mockImplementation((req, res) => res.status(400).send('Note name is required'));
         const response = await request(app)
             .delete('/notes/delete')
+            .set('Authorization', `Bearer ${token}`)
             .send({});
 
         expect(response.status).toBe(400);

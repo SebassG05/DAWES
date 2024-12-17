@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getBooks } from '../controllers/booksController.js'; // Corrige el nombre del archivo importado
+import { getBooks } from '../controllers/booksController.js';
 
 const router = Router();
 

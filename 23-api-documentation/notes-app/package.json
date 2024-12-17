@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "test": "jest --coverage"
+    "test": "jest",
+    "test:cov": "jest --coverage"
   },
   "dependencies": {
     "archiver": "^7.0.1",

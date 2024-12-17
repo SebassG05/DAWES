@@ -97,6 +97,12 @@ export function deleteNote(req, res, next) {
 export function getNotes(req, res, next) {
     try {
         const { sortBy, filterBy, filterValue, page = 1, limit = 10 } = req.query;
+        if (!page) {
+            return res.status(400).json({ error: 'page is required' });
+        }
+        if (!limit) {
+            return res.status(400).json({ error: 'limit is required' });
+        }
         let notes = fs.readdirSync(notesDir).map(file => {
             try {
                 return JSON.parse(fs.readFileSync(path.join(notesDir, file)));

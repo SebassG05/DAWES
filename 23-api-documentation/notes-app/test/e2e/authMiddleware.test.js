@@ -1,4 +1,4 @@
-import { authMiddleware } from '../src/middlewares/authMiddleware.js'; // Corrige la ruta del import
+import { authMiddleware } from '../../src/middlewares/authMiddleware.js'; // Corrige la ruta del import
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
